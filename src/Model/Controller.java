@@ -1,4 +1,4 @@
-package sample;
+package Model;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
@@ -7,8 +7,17 @@ import javafx.fxml.FXML;
 
 public class Controller {
 
+
+    @FXML
+    private JFXButton setting;
+
+    @FXML
+    void handleSettings(ActionEvent event) {
+
+    }
     @FXML
     private JFXButton send;
+
 
     @FXML
     private JFXButton recieve;
