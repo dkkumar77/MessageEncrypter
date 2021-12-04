@@ -2,20 +2,41 @@ package Model;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.layout.AnchorPane;
 
 public class Controller {
 
+
+    @FXML
+    private AnchorPane sendPane;
+
+
+    @FXML
+    private JFXButton receive;
+
+    @FXML
+    private AnchorPane receivePane;
+
+    @FXML
+    private JFXTextArea receiveTextArea;
+
+    @FXML
+    private JFXTextField idKey;
+
+    @FXML
+    private JFXTextField privKey;
+
+    @FXML
+    private JFXButton submitReceive;
 
     @FXML
     private JFXButton setting;
 
     @FXML
     private JFXButton send;
-
-    @FXML
-    private JFXButton recieve;
 
     @FXML
     private JFXTextArea message;
@@ -39,6 +60,13 @@ public class Controller {
     }
 
     @FXML
+    void handleSubmitReceive(ActionEvent event) {
+
+    }
+
+
+
+    @FXML
     void handleSettings(ActionEvent event) {
 
     }
@@ -54,7 +82,9 @@ public class Controller {
 
     @FXML
     void handleReceive(ActionEvent event) {
-        if(event.getSource().equals(recieve)){
+        if(event.getSource().equals(receive)){
+            sendPane.toBack();
+            receivePane.toFront();
 
         }
 
@@ -63,9 +93,10 @@ public class Controller {
     @FXML
     void handleSend(ActionEvent event) {
         if (event.getSource().equals(send)) {
-            String fullMessage = message.getText();
+            receivePane.toBack();
 
-            message.setText("");
+            sendPane.toFront();
+
 
 
         }
