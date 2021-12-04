@@ -12,12 +12,7 @@ public class Controller {
     private JFXButton setting;
 
     @FXML
-    void handleSettings(ActionEvent event) {
-
-    }
-    @FXML
     private JFXButton send;
-
 
     @FXML
     private JFXButton recieve;
@@ -32,6 +27,24 @@ public class Controller {
     private JFXButton close;
 
     @FXML
+    private JFXButton clear;
+
+    @FXML
+    void handleClear(ActionEvent event)
+    {
+        if(event.getSource().equals(clear))
+        {
+           message.setText("");
+        }
+    }
+
+    @FXML
+    void handleSettings(ActionEvent event) {
+
+    }
+
+
+    @FXML
     void handleClose(ActionEvent event) {
         if(event.getSource().equals(close)){
             System.exit(0);
@@ -40,7 +53,7 @@ public class Controller {
     }
 
     @FXML
-    void handleRecieve(ActionEvent event) {
+    void handleReceive(ActionEvent event) {
         if(event.getSource().equals(recieve)){
 
         }

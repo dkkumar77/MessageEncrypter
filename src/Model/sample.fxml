@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
-<?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -18,20 +17,20 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #d0b7b7;">
+      <AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #cceaf0;">
          <children>
-            <JFXButton fx:id="send" layoutX="27.0" layoutY="65.0" onAction="#handleSend" text="Send" />
-            <JFXButton fx:id="recieve" layoutX="20.0" layoutY="114.0" onAction="#handleRecieve" text="Recieve" />
-            <JFXTextArea fx:id="message" layoutX="89.0" layoutY="65.0" prefHeight="274.0" prefWidth="459.0" promptText="Type in Message" unFocusColor="#d0b7b7" />
-            <JFXButton fx:id="submit" layoutX="497.0" layoutY="382.0" onAction="#handleSubmit" text="Submit" />
-            <Label alignment="CENTER" layoutX="138.0" layoutY="26.0" prefHeight="19.0" prefWidth="340.0" text="Shahbaj and Deepak's Message Encrypter" wrapText="true">
+            <JFXButton fx:id="clear" layoutX="222.0" layoutY="382.0" onAction="#handleClear" style="-fx-background-color: aed1eb;" text="Clear" />
+            <JFXButton fx:id="send" layoutX="331.0" layoutY="382.0" onAction="#handleSend" style="-fx-background-color: aed1eb;" text="Send" />
+            <JFXButton fx:id="recieve" layoutX="270.0" layoutY="446.0" onAction="#handleReceive" style="-fx-background-color: aed1eb;" text="Recieve" />
+            <JFXTextArea fx:id="message" layoutX="71.0" layoutY="95.0" opacity="0.45" prefHeight="274.0" prefWidth="459.0" promptText="Type in Message" style="-fx-background-color: aed1eb;" unFocusColor="#aed1eb" />
+            <JFXButton fx:id="submit" layoutX="518.0" layoutY="459.0" onAction="#handleSubmit" style="-fx-background-color: aed1eb;" text="Submit" />
+            <Label alignment="CENTER" layoutX="130.0" layoutY="40.0" prefHeight="20.0" prefWidth="340.0" text="Message Encrypter" wrapText="true">
                <font>
-                  <Font size="15.0" />
+                  <Font name="Courier Bold" size="18.0" />
                </font>
             </Label>
-            <JFXButton fx:id="close" layoutX="525.0" layoutY="12.0" onAction="#handleClose" text="Close" />
-            <JFXButton fx:id="setting" layoutX="23.0" layoutY="12.0" onAction="#handleSettings" text="Settings" />
-            <Canvas height="200.0" layoutX="27.0" layoutY="182.0" width="200.0" />
+            <JFXButton fx:id="close" layoutX="536.0" layoutY="36.0" onAction="#handleClose" style="-fx-background-color: aed1eb;" text="Close" />
+            <JFXButton fx:id="setting" layoutX="14.0" layoutY="459.0" onAction="#handleSettings" prefHeight="0.0" prefWidth="63.0" style="-fx-background-color: aed1eb;" text="Settings" />
          </children>
       </AnchorPane>
    </children>
