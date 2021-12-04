@@ -1,2 +1,5 @@
 # Project exclude paths
 /out/
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/libraries/postgresql_42_3_1.xml
+/.idea/dbnavigator.xml

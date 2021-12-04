@@ -21,6 +21,8 @@ import java.io.InputStreamReader;
 import java.net.*;
 import java.util.Date;
 
+import static java.lang.Thread.sleep;
+
 public class bootController {
 
     protected String data[] = new String[6];
@@ -142,32 +144,39 @@ public class bootController {
     }
 
     @FXML
-    void handleSubmit(ActionEvent event) throws UnknownHostException, IOException
+    void handleSubmit(ActionEvent event) throws UnknownHostException, IOException, InterruptedException
     {
         warning.setText("");
 
-        if(!sendPrivateKey.getText().equals("") && !sendMessageID.getText().equals("") && !message.getText().equals("")){
-
+        if(!sendPrivateKey.getText().equals("") && !sendMessageID.getText().equals("") && !message.getText().equals(""))
+        {
             printData(getData());
-
-
-
-        message.setText("Message has successfully sent ");
-
+            message.setText("Message has successfully sent");
         }
-        else{
+
+        else
+        {
             warning.setText("Fields can not be empty");
+        }
+
+
+
+        sendMessageID.setText("");
+        sendPrivateKey.setText("");
+
     }
 
-
+    private void sleep() throws InterruptedException
+    {
+        Thread.sleep(2000);
     }
 
 
 
     private String [] getData() throws IOException {
-        data[0] = sendPrivateKey.getText();
-        data[1] = sendMessageID.getText();
-        data[2] =  message.getText();
+        data[0] = sendMessageID.getText();
+        data[1] =  message.getText();
+        data[2] = sendPrivateKey.getText();
         data[3] = java.util.Calendar.getInstance().getTime().toString();
         data[4] = InetAddress.getLocalHost().getHostAddress();
         data[5] = System.getProperty("os.name");
