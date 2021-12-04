@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: aed1eb;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Model.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: aed1eb;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.bootController">
    <children>
       <AnchorPane fx:id="receivePane" layoutX="101.0" layoutY="109.0" maxHeight="300.0" maxWidth="400.0" minHeight="250.0" minWidth="261.0" prefHeight="250.0" prefWidth="400.0">
          <children>
@@ -36,7 +36,7 @@
       </AnchorPane>
       <AnchorPane fx:id="sendPane" layoutX="101.0" layoutY="109.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="400.0">
          <children>
-            <JFXTextArea fx:id="message" layoutX="30.0" layoutY="14.0" opacity="0.45" prefHeight="208.0" prefWidth="340.0" promptText="Type in Message" style="-fx-background-color: aed1eb;" unFocusColor="#aed1eb" />
+            <JFXTextArea fx:id="message" layoutX="30.0" layoutY="14.0" opacity="0.45" prefHeight="208.0" prefWidth="340.0" promptText="Type in Message"  style="-fx-background-color: aed1eb;" unFocusColor="#aed1eb" />
             <JFXButton fx:id="clear" layoutX="118.0" layoutY="247.0" onAction="#handleClear" style="-fx-background-color: aed1eb;" text="Clear" />
             <JFXButton fx:id="submit" layoutX="233.0" layoutY="247.0" onAction="#handleSubmit" style="-fx-background-color: aed1eb;" text="Submit" />
          </children>

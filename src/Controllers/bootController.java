@@ -1,13 +1,23 @@
-package Model;
+package Controllers;
 
+import Model.Constants;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
-public class Controller {
+import java.io.IOException;
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
+
+public class bootController {
 
 
     @FXML
@@ -50,6 +60,11 @@ public class Controller {
     @FXML
     private JFXButton clear;
 
+    Parent root;
+    Scene scene;
+    Stage stage;
+
+
     @FXML
     void handleClear(ActionEvent event)
     {
@@ -67,7 +82,18 @@ public class Controller {
 
 
     @FXML
-    void handleSettings(ActionEvent event) {
+    void handleSettings(ActionEvent event) throws IOException {
+
+        if(event.getSource().equals(setting)){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(Constants.SETTING));
+            root = loader.load();
+
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        }
 
     }
 
@@ -107,5 +133,6 @@ public class Controller {
     void handleSubmit(ActionEvent event) {
 
     }
+
 
 }
