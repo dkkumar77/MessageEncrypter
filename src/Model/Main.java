@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("bootPane.fxml"));
-        primaryStage.setTitle("Message Encrypter");
+        primaryStage.setTitle("Message Encrypter V1");
         primaryStage.setScene(new Scene(root, 600, 500));
         primaryStage.show();
         primaryStage.setMaxWidth(600);
