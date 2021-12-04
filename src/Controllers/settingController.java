@@ -21,6 +21,7 @@ public class settingController {
     Stage stage;
     Scene scene;
 
+
     @FXML
     void handleBack(ActionEvent event) throws IOException {
         if(event.getSource().equals(back)){

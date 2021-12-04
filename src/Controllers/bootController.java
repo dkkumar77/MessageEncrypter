@@ -2,6 +2,7 @@ package Controllers;
 
 import Model.Constants;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -10,23 +11,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.Inet4Address;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
+import java.io.InputStreamReader;
+import java.net.*;
+import java.util.Date;
 
 public class bootController {
 
-
-    String messageID;
-    String privateKey;
-    String messageBody;
-    String date;
-    String IP;
-    String OS;
+    protected String data[] = new String[6];
 
     @FXML
     private AnchorPane sendPane;
@@ -45,7 +42,14 @@ public class bootController {
     private JFXTextField idKey;
 
     @FXML
-    private JFXTextField privKey;
+    private Label warning;
+
+    @FXML
+    private JFXTextField privKey,sendMessageID;
+
+    @FXML
+    private JFXPasswordField sendPrivateKey;
+
 
     @FXML
     private JFXButton submitReceive;
@@ -138,20 +142,47 @@ public class bootController {
     }
 
     @FXML
-    void handleSubmit(ActionEvent event) throws UnknownHostException
+    void handleSubmit(ActionEvent event) throws UnknownHostException, IOException
     {
+        warning.setText("");
+
+        if(!sendPrivateKey.getText().equals("") && !sendMessageID.getText().equals("") && !message.getText().equals("")){
+
+            printData(getData());
 
 
-      //   privateKey = privKey.getText();
-      //  messageID = idKey.getText();
-        messageBody = message.getText();
-        date = java.util.Calendar.getInstance().getTime().toString();
-        IP = InetAddress.getLocalHost().getHostName();
-        OS = System.getProperty("os.name");
 
+        message.setText("Message has successfully sent ");
+
+        }
+        else{
+            warning.setText("Fields can not be empty");
+    }
 
 
     }
 
+
+
+    private String [] getData() throws IOException {
+        data[0] = sendPrivateKey.getText();
+        data[1] = sendMessageID.getText();
+        data[2] =  message.getText();
+        data[3] = java.util.Calendar.getInstance().getTime().toString();
+        data[4] = InetAddress.getLocalHost().getHostAddress();
+        data[5] = System.getProperty("os.name");
+        return data;
+
+    }
+
+
+    @SuppressWarnings("unused")
+    private void printData(String[] data) {
+        for(int i = 0; i < data.length; i++){
+            System.out.println("\n" + data[i]);
+
+        }
+
+    }
 
 }
