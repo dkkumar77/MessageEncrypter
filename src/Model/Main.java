@@ -14,6 +14,10 @@ public class Main extends Application {
         primaryStage.setTitle("Message Encrypter");
         primaryStage.setScene(new Scene(root, 600, 500));
         primaryStage.show();
+        primaryStage.setMaxWidth(600);
+        primaryStage.setMaxHeight(500);
+        primaryStage.setMinWidth(600);
+        primaryStage.setMinHeight(500);
     }
 
 

@@ -16,14 +16,14 @@
                   <Font name="Kailasa Regular" size="13.0" />
                </font>
             </JFXTextArea>
-            <JFXTextField fx:id="idKey" alignment="CENTER" layoutX="128.0" layoutY="14.0" text="Message ID" />
-            <JFXTextField fx:id="privKey" alignment="CENTER" layoutX="128.0" layoutY="62.0" text="Message Private Key" />
+            <JFXTextField fx:id="idKey" alignment="CENTER" labelFloat="true" layoutX="128.0" layoutY="14.0" promptText="Message ID" />
+            <JFXTextField fx:id="privKey" alignment="CENTER" labelFloat="true" layoutX="128.0" layoutY="62.0" promptText="Message Private Key" />
             <JFXButton fx:id="submitReceive" layoutX="308.0" layoutY="62.0" onAction="#handleSubmitReceive" style="-fx-background-color: aed1eb;" text="Submit" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: #cceaf0;">
          <children>
-            <JFXButton fx:id="send" layoutX="169.0" layoutY="446.0" onAction="#handleSend" style="-fx-background-color: aed1eb;" text="Send" />
+            <JFXButton fx:id="send" layoutX="169.0" layoutY="417.0" onAction="#handleSend" style="-fx-background-color: aed1eb;" text="Send" />
             <Label alignment="CENTER" layoutX="130.0" layoutY="40.0" prefHeight="20.0" prefWidth="340.0" text="Message Encrypter" wrapText="true">
                <font>
                   <Font name="Courier Bold" size="18.0" />
@@ -31,7 +31,7 @@
             </Label>
             <JFXButton fx:id="close" layoutX="536.0" layoutY="36.0" onAction="#handleClose" style="-fx-background-color: aed1eb;" text="Close" />
             <JFXButton fx:id="setting" layoutX="14.0" layoutY="36.0" onAction="#handleSettings" prefHeight="0.0" prefWidth="63.0" style="-fx-background-color: aed1eb;" text="Settings" />
-            <JFXButton fx:id="receive" layoutX="383.0" layoutY="446.0" onAction="#handleReceive" style="-fx-background-color: aed1eb;" text="Recieve" />
+            <JFXButton fx:id="receive" layoutX="383.0" layoutY="417.0" onAction="#handleReceive" style="-fx-background-color: aed1eb;" text="Recieve" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="sendPane" layoutX="101.0" layoutY="109.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="400.0">
