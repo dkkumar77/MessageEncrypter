@@ -15,10 +15,18 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.Inet4Address;
+import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public class bootController {
 
+
+    String messageID;
+    String privateKey;
+    String messageBody;
+    String date;
+    String IP;
+    String OS;
 
     @FXML
     private AnchorPane sendPane;
@@ -130,7 +138,18 @@ public class bootController {
     }
 
     @FXML
-    void handleSubmit(ActionEvent event) {
+    void handleSubmit(ActionEvent event) throws UnknownHostException
+    {
+
+
+      //   privateKey = privKey.getText();
+      //  messageID = idKey.getText();
+        messageBody = message.getText();
+        date = java.util.Calendar.getInstance().getTime().toString();
+        IP = InetAddress.getLocalHost().getHostName();
+        OS = System.getProperty("os.name");
+
+
 
     }
 
