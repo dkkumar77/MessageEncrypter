@@ -26,7 +26,8 @@ import static java.lang.Thread.sleep;
 public class bootController
     {
 
-        protected String data[] = new String[6];    // For each entry into Postgre database
+        protected String[] outboundData = new String[6];    // For each entry into Postgre database
+        protected String[] inboundData = new String[2];
 
         @FXML
         private AnchorPane sendPane;        // Defaulted to front
@@ -41,7 +42,7 @@ public class bootController
         private JFXButton receive;          // Button for receivePane
 
         @FXML
-        private Label warning;          // Activated with empty input bodies
+        private Label sendWarning;          // Activated with empty input bodies
 
         @FXML
         private Label success;          // Activated when outgoing message is successfully processed
@@ -53,7 +54,7 @@ public class bootController
         private JFXButton clear;
 
         @FXML
-        private JFXTextArea messageInput;
+        private JFXTextArea outboundMessage;
 
         @FXML
         private JFXButton settings;
@@ -62,22 +63,28 @@ public class bootController
         private JFXButton sendSubmit;
 
         @FXML
+        private JFXTextField sendMessageID;
+
+        @FXML
         private JFXPasswordField sendPrivateKey;
 
 
         @FXML
-        private JFXTextArea receiveTextArea;
+        private JFXTextArea inboundMessage;
 
         @FXML
-        private JFXTextField idKey;
+        private JFXTextField receiveMessageID;
 
 
         @FXML
-        private JFXTextField privKey, sendMessageID;
+        private JFXTextField receivePrivateKey;
 
 
         @FXML
         private JFXButton receiveSubmit;
+
+        @FXML
+        private Label receiveWarning;
 
 
         Parent root;
@@ -145,7 +152,7 @@ public class bootController
         {
             if (event.getSource().equals(clear))
             {
-                messageInput.setText("");
+                outboundMessage.setText("");
             }
         }
 
@@ -154,27 +161,47 @@ public class bootController
         {
             if (event.getSource().equals(sendSubmit))
             {
-                warning.setText("");
+                sendWarning.setText("");
                 success.setText("");
 
 
-                if (!sendPrivateKey.getText().equals("")
-                        && !sendMessageID.getText().equals("")
-                        && !messageInput.getText().equals(""))
+                if (!sendMessageID.getText().equals("")
+                        && !sendPrivateKey.getText().equals("")
+                        && !outboundMessage.getText().equals(""))
                 {
-                    printData(getData());
+                    printData(getOutboundData());
                     success.setText("Message sent!");
+                } else if (!sendMessageID.getText().equals("")
+                        && (!sendPrivateKey.getText().equals("")))
+                {
+                    sendWarning.setText("Message cannot be empty");
                 } else
                 {
-                    warning.setText("Fields can not be empty");
+                    sendWarning.setText("Fill all fields");
                 }
 
-                messageInput.setText("");
+                outboundMessage.setText("");
                 sendMessageID.setText("");
                 sendPrivateKey.setText("");
             }
 
         }
+
+        private String[] getOutboundData() throws IOException
+        {
+            outboundData[0] = sendMessageID.getText();
+            outboundData[1] = sendPrivateKey.getText();
+            outboundData[2] = outboundMessage.getText();
+            outboundData[3] = java.util.Calendar.getInstance().getTime().toString();
+            outboundData[4] = InetAddress.getLocalHost().getHostAddress();
+            outboundData[5] = System.getProperty("os.name");
+            return outboundData;
+
+        }
+
+
+
+
 
 
         // RECEIVE PANE
@@ -185,23 +212,38 @@ public class bootController
         {
             if(event.getSource().equals(receiveSubmit))
             {
+                receiveWarning.setText("");
+
+                if(!receiveMessageID.getText().equals("")
+                        && !receivePrivateKey.getText().equals(""))
+                {
+                    printData(getInboundData());
+                    inboundMessage.setText("Message retrieval simulated. ");
+                }
+                else
+                {
+                    receiveWarning.setText("Fields cannot be empty. ");
+                }
+
+                receiveMessageID.setText("");
+                receivePrivateKey.setText("");
 
             }
 
         }
 
-
-        private String[] getData() throws IOException
+        private String[] getInboundData()
         {
-            data[0] = sendMessageID.getText();
-            data[1] = messageInput.getText();
-            data[2] = sendPrivateKey.getText();
-            data[3] = java.util.Calendar.getInstance().getTime().toString();
-            data[4] = InetAddress.getLocalHost().getHostAddress();
-            data[5] = System.getProperty("os.name");
-            return data;
-
+            inboundData[0] = receiveMessageID.getText();
+            inboundData[1] = receivePrivateKey.getText();
+            return inboundData;
         }
+
+
+
+
+
+
 
 
         @SuppressWarnings("unused")
