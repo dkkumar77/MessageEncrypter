@@ -25,7 +25,7 @@
                <font>
                   <Font name="Menlo Regular" size="13.0" />
                </font></JFXTextField>
-            <JFXButton fx:id="submitReceive" layoutX="308.0" layoutY="62.0" onAction="#handleSubmitReceive" style="-fx-background-color: aed1eb;" text="Submit">
+            <JFXButton fx:id="receiveSubmit" layoutX="308.0" layoutY="62.0" onAction="#handleReceiveSubmit" style="-fx-background-color: aed1eb;" text="Submit">
                <font>
                   <Font name="Menlo Regular" size="13.0" />
                </font></JFXButton>
@@ -46,7 +46,7 @@
                <font>
                   <Font name="Menlo Regular" size="13.0" />
                </font></JFXButton>
-            <JFXButton fx:id="setting" layoutX="14.0" layoutY="36.0" onAction="#handleSettings" prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: aed1eb;" text="Settings">
+            <JFXButton fx:id="settings" layoutX="14.0" layoutY="36.0" onAction="#handleSettings" prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: aed1eb;" text="Settings">
                <font>
                   <Font name="Menlo Regular" size="13.0" />
                </font></JFXButton>
@@ -63,15 +63,15 @@
       </AnchorPane>
       <AnchorPane fx:id="sendPane" layoutX="101.0" layoutY="109.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="400.0">
          <children>
-            <JFXTextArea fx:id="message" layoutX="30.0" layoutY="95.0" opacity="0.45" prefHeight="127.0" prefWidth="340.0" promptText="Type in Message" style="-fx-background-color: aed1eb;" unFocusColor="#aed1eb">
+            <JFXTextArea fx:id="messageInput" layoutX="30.0" layoutY="95.0" opacity="0.45" prefHeight="127.0" prefWidth="340.0" promptText="Type here..." style="-fx-background-color: aed1eb;" unFocusColor="#aed1eb">
                <font>
-                  <Font name="Times New Roman" size="13.0" />
+                  <Font name="Monaco" size="14.0" />
                </font></JFXTextArea>
             <JFXButton fx:id="clear" layoutX="118.0" layoutY="247.0" onAction="#handleClear" style="-fx-background-color: aed1eb;" text="Clear">
                <font>
                   <Font name="Menlo Regular" size="13.0" />
                </font></JFXButton>
-            <JFXButton fx:id="submit" layoutX="233.0" layoutY="247.0" onAction="#handleSubmit" ripplerFill="#aed1eb" style="-fx-background-color: aed1eb;" text="Submit">
+            <JFXButton fx:id="sendSubmit" layoutX="233.0" layoutY="247.0" onAction="#handleSendSubmit" ripplerFill="#aed1eb" style="-fx-background-color: aed1eb;" text="Submit">
                <font>
                   <Font name="Menlo Regular" size="13.0" />
                </font></JFXButton>
@@ -87,6 +87,11 @@
                <font>
                   <Font name="Menlo Regular" size="13.0" />
                </font></JFXPasswordField>
+            <Label fx:id="success" alignment="CENTER" layoutX="164.0" layoutY="222.0" prefHeight="27.0" prefWidth="73.0" textAlignment="CENTER" textFill="#21b26c">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
