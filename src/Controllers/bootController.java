@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.*;
@@ -91,6 +92,8 @@ public class bootController
         Scene scene;
         Stage stage;
 
+        Database e;
+
 
         @FXML
         void handleSend(ActionEvent event)      // Clicking send button pushes send pane
@@ -105,12 +108,16 @@ public class bootController
 
 
         @FXML
-        void handleReceive(ActionEvent event)   // Clicking receive button pushes receive pane
+        void handleReceive(ActionEvent event) throws FileNotFoundException, IOException   // Clicking receive button pushes receive pane
         {
             if (event.getSource().equals(receive))
             {
+                this.e = new Database();
+
+
                 sendPane.toBack();
                 receivePane.toFront();
+
             }
 
         }
@@ -147,6 +154,9 @@ public class bootController
         // SEND PANE
 
 
+
+
+
         @FXML
         void handleClear(ActionEvent event)
         {
@@ -169,7 +179,9 @@ public class bootController
                         && !sendPrivateKey.getText().equals("")
                         && !outboundMessage.getText().equals(""))
                 {
-                    printData(getOutboundData());
+                    //printData(getOutboundData());
+                    Database e = new Database();
+                    e.add(getOutboundData());
                     success.setText("Message sent!");
                 } else if (!sendMessageID.getText().equals("")
                         && (!sendPrivateKey.getText().equals("")))
@@ -208,17 +220,44 @@ public class bootController
 
 
         @FXML
-        void handleReceiveSubmit(ActionEvent event)
-        {
+        void handleReceiveSubmit(ActionEvent event) throws InterruptedException {
             if(event.getSource().equals(receiveSubmit))
             {
-                receiveWarning.setText("");
+                receiveWarning.setText("Verifying....");
 
                 if(!receiveMessageID.getText().equals("")
                         && !receivePrivateKey.getText().equals(""))
                 {
-                    printData(getInboundData());
-                    inboundMessage.setText("Message retrieval simulated. ");
+                    Object obj = new Object();
+
+                    //printData(getInboundData());
+                    //inboundMessage.setText("Message retrieval simulated. ");
+
+                    int statusCode = 0;
+                    inboundMessage.setText("Verifying..");
+
+
+                    /*
+                    synchronized(obj) {
+                        do {
+                            obj.wait(1000, 0);
+                            statusCode = 1;
+                            obj.notify();
+                        }
+                        while (statusCode == 0);
+
+                    }
+
+                     */
+
+                    if(e.verifyCredentials(receiveMessageID.getText(), receivePrivateKey.getText())){
+                        inboundMessage.setText(e.findString(receiveMessageID.getText()));
+
+                    }
+                    /**
+                     * Message ID -> Private Key that the user enters matches the private key for the message id
+                     * -> print String
+                     */
                 }
                 else
                 {
@@ -238,13 +277,6 @@ public class bootController
             inboundData[1] = receivePrivateKey.getText();
             return inboundData;
         }
-
-
-
-
-
-
-
 
         @SuppressWarnings("unused")
         private void printData(String[] data)

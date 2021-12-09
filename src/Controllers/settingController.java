@@ -14,6 +14,7 @@ import java.io.IOException;
 
 public class settingController {
 
+
     @FXML
     private JFXButton back;
 
@@ -35,6 +36,11 @@ public class settingController {
 
 
         }
+
+    }
+
+    void changeColor(){
+
 
     }
 
