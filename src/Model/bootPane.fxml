@@ -108,6 +108,7 @@
                   <Font name="Menlo Regular" size="13.0" />
                </font>
             </JFXTextField>
+            <JFXButton fx:id="download" layoutX="362.0" layoutY="234.0" onAction="#handleDownload" prefHeight="27.0" prefWidth="35.0" text="↧" />
          </children>
       </AnchorPane>
    </children>

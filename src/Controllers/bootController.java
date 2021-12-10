@@ -15,11 +15,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.*;
+import java.nio.Buffer;
 import java.security.*;
 import java.util.Date;
 import java.util.Random;
@@ -43,7 +41,7 @@ public class bootController
         private JFXButton send;             // Button for sendPane
 
         @FXML
-        private JFXButton receive;          // Button for receivePane
+        private JFXButton receive, download;          // Button for receivePane
 
         @FXML
         private Label sendWarning;          // Activated with empty input bodies
@@ -131,6 +129,20 @@ public class bootController
         }
 
         @FXML
+        void handleDownload(ActionEvent event) throws IOException {
+
+            if (event.getSource().equals(download)) {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(messageID + ".txt", true));
+                writer.write("Message ID: " + messageID + "\n");
+                writer.write("Private Key " + privateKey);
+
+
+                writer.close();
+
+
+            }
+        }
+        @FXML
         void handleClose(ActionEvent event)     // Close button exits program from application
         {
             if (event.getSource().equals(close))
@@ -171,6 +183,8 @@ public class bootController
             if (event.getSource().equals(clear))
             {
                 outboundMessage.setText("");
+                sendMessageID.setText("");
+                sendPrivateKey.setText("");
             }
         }
 
