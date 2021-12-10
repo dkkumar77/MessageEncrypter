@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
@@ -68,14 +67,15 @@
                   <Font name="Menlo Regular" size="10.0" />
                </font>
             </Label>
+            <Label layoutX="40.0" layoutY="211.0" prefHeight="17.0" prefWidth="373.0" />
 
                      </children>
       </AnchorPane>
       <AnchorPane fx:id="sendPane" layoutX="101.0" layoutY="109.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="400.0">
          <children>
-            <JFXTextArea fx:id="outboundMessage" layoutX="30.0" layoutY="95.0" opacity="0.45" prefHeight="127.0" prefWidth="340.0" promptText="Type here..." style="-fx-background-color: aed1eb;" unFocusColor="#aed1eb">
+            <JFXTextArea fx:id="outboundMessage" labelFloat="true" layoutX="30.0" layoutY="95.0" opacity="0.45" prefHeight="127.0" prefWidth="340.0" promptText="Type in Message to get Message ID and Private Key.." style="-fx-background-color: aed1eb;" unFocusColor="#aed1eb">
                <font>
-                  <Font name="Monaco" size="14.0" />
+                  <Font name="Monaco" size="11.0" />
                </font>
             </JFXTextArea>
             <JFXButton fx:id="clear" layoutX="118.0" layoutY="247.0" onAction="#handleClear" style="-fx-background-color: aed1eb;" text="Clear">
@@ -88,16 +88,11 @@
                   <Font name="Menlo Regular" size="13.0" />
                </font>
             </JFXButton>
-            <JFXTextField fx:id="sendMessageID" alignment="CENTER" focusColor="#aed1eb" labelFloat="true" layoutX="131.0" layoutY="9.0" prefHeight="26.0" prefWidth="145.0" promptText="Enter Message ID" unFocusColor="#aed1eb">
+            <JFXTextField fx:id="sendMessageID" alignment="CENTER" editable="false" focusColor="#aed1eb" labelFloat="true" layoutX="131.0" layoutY="9.0" prefHeight="26.0" prefWidth="145.0" promptText="Message ID" unFocusColor="#aed1eb">
                <font>
                   <Font name="Menlo Regular" size="13.0" />
                </font>
             </JFXTextField>
-            <JFXPasswordField fx:id="sendPrivateKey" alignment="CENTER" focusColor="#aed1eb" labelFloat="true" layoutX="128.0" layoutY="57.0" prefHeight="26.0" prefWidth="145.0" promptText="Enter Private Key" unFocusColor="#aed1eb">
-               <font>
-                  <Font name="Menlo Regular" size="13.0" />
-               </font>
-            </JFXPasswordField>
             <Label fx:id="success" alignment="CENTER" layoutX="164.0" layoutY="222.0" prefHeight="27.0" prefWidth="73.0" textAlignment="CENTER" textFill="#21b26c">
                <font>
                   <Font size="10.0" />
@@ -108,6 +103,11 @@
                   <Font size="10.0" />
                </font>
             </Label>
+            <JFXTextField fx:id="sendPrivateKey" alignment="CENTER" editable="false" focusColor="#aed1eb" labelFloat="true" layoutX="131.0" layoutY="50.0" prefHeight="26.0" prefWidth="145.0" promptText="Private Key" unFocusColor="#aed1eb">
+               <font>
+                  <Font name="Menlo Regular" size="13.0" />
+               </font>
+            </JFXTextField>
          </children>
       </AnchorPane>
    </children>

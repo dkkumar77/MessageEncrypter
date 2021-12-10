@@ -143,8 +143,9 @@ public class Database{
         public static void main(String[] args) throws IOException{
                 Database e = new Database();
                 String [] a = {"1","234","3","4","5","6"};
-                e.add(a);
 
+                System.out.println(e.findPrivKey("1546849643"));
+                e.verifyCredentials("1546849643","[B@60e3b6aa");
 
         }
 

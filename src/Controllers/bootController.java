@@ -20,13 +20,16 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.*;
+import java.security.*;
 import java.util.Date;
+import java.util.Random;
 
 import static java.lang.Thread.sleep;
 
 public class bootController
     {
 
+        private static final int MAX_VALUE = 0x7FFFFFFF;
         protected String[] outboundData = new String[6];    // For each entry into Postgre database
         protected String[] inboundData = new String[2];
 
@@ -67,7 +70,7 @@ public class bootController
         private JFXTextField sendMessageID;
 
         @FXML
-        private JFXPasswordField sendPrivateKey;
+        private JFXTextField sendPrivateKey;
 
 
         @FXML
@@ -88,11 +91,16 @@ public class bootController
         private Label receiveWarning;
 
 
+        /**
+         * GLOBALS
+         */
         Parent root;
         Scene scene;
         Stage stage;
-
         Database e;
+        String messageID;
+        String privateKey;
+
 
 
         @FXML
@@ -167,20 +175,18 @@ public class bootController
         }
 
         @FXML
-        void handleSendSubmit(ActionEvent event) throws IOException
-        {
+        void handleSendSubmit(ActionEvent event) throws IOException, NoSuchAlgorithmException, NoSuchProviderException, InterruptedException {
             if (event.getSource().equals(sendSubmit))
             {
                 sendWarning.setText("");
                 success.setText("");
 
 
-                if (!sendMessageID.getText().equals("")
-                        && !sendPrivateKey.getText().equals("")
-                        && !outboundMessage.getText().equals(""))
+                if (!outboundMessage.getText().equals(""))
                 {
                     //printData(getOutboundData());
                     Database e = new Database();
+
                     e.add(getOutboundData());
                     success.setText("Message sent!");
                 } else if (!sendMessageID.getText().equals("")
@@ -192,17 +198,29 @@ public class bootController
                     sendWarning.setText("Fill all fields");
                 }
 
+                sendMessageID.setText(messageID);
+                sendPrivateKey.setText(privateKey);
+
                 outboundMessage.setText("");
-                sendMessageID.setText("");
-                sendPrivateKey.setText("");
+
+
+
             }
+
+
 
         }
 
-        private String[] getOutboundData() throws IOException
-        {
-            outboundData[0] = sendMessageID.getText();
-            outboundData[1] = sendPrivateKey.getText();
+        private String[] getOutboundData() throws IOException, NoSuchAlgorithmException, NoSuchProviderException {
+
+
+            messageID = String.valueOf(new Random().nextInt(MAX_VALUE));
+            KeyPairGenerator keyGen = KeyPairGenerator.getInstance("DSA", "SUN");
+            PrivateKey priv = keyGen.generateKeyPair().getPrivate();
+            this.privateKey = priv.getEncoded().toString();
+
+            outboundData[0] = messageID;
+            outboundData[1] = privateKey;
             outboundData[2] = outboundMessage.getText();
             outboundData[3] = java.util.Calendar.getInstance().getTime().toString();
             outboundData[4] = InetAddress.getLocalHost().getHostAddress();
